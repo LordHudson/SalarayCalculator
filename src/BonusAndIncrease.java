@@ -74,8 +74,8 @@ public class BonusAndIncrease {
 
         double minimumSalary = 112908.00;
         if (this.salary < minimumSalary) {
-            bonus = 0;
-        }
+            System.out.println("Invalid salary amount, bonus not calculated");
+        } else
 
         if (this.rating <= 0 || this.rating > 5) {
             System.out.println("Invalid rating! Bonus not calculated!");
@@ -102,7 +102,7 @@ public class BonusAndIncrease {
                 System.out.println("Your bonus amount is " + "R" + bonus);
             }
 
-        } else if ((this.rating == 5) && !(this.salary < minimumSalary)) {
+        } else if ((this.rating == 5) ) {
             double bonusAmount = (percentage3 / 100) * this.salary;
             if (bonusAmount > bonus2) {
                 System.out.println("Your bonus amount is: " + "R" + bonusAmount);
@@ -110,9 +110,7 @@ public class BonusAndIncrease {
                 System.out.println("Your bonus amount is: " + "R" + bonus2);
             }
         } else {
-            System.out.println("Invalid rating or salary amount! Bonus not calculated!" + "\n" +
-                    "Minimum salary should be: " + minimumSalary + "\n" +
-                    "Rating should be not be less than 1 or greater than 2");
+            System.out.println("Invalid rating");
         }
     }
 }
