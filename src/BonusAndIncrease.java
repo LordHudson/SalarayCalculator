@@ -3,6 +3,7 @@ import java.text.NumberFormat;
 public class BonusAndIncrease {
 
     private final double salary;
+    private final double minimumSalary = 112908.00;
     private final double rating;
     private final double percentageIncrease;
 
@@ -11,18 +12,16 @@ public class BonusAndIncrease {
         this.salary = salary;
         this.rating = rating;
 
-        double minimumSalary = 112908.00;
-        if (salary < minimumSalary) {
+        if (salary < this.minimumSalary) {
             System.out.println("Invalid salary amount. Minimum salary is " + currencyFormatter(minimumSalary));
         }
     }
 
     public void increaseCalculator() {
 
-        double minimumSalary = 112908.00;
-        if (salary < minimumSalary || percentageIncrease < 1 || (rating < 0 || rating > 5)) {
+        if (this.salary < this.minimumSalary || this.percentageIncrease < 1 || (this.rating < 0 || this.rating > 5)) {
             System.out.println("Invalid Input Error: " + "\n" +
-                    "Minimum amount for salary is: " + currencyFormatter(minimumSalary) + "\n" +
+                    "Minimum amount for salary is: " + currencyFormatter(this.minimumSalary) + "\n" +
                     "Percentage cannot be less than: 1" + "\n" +
                     "Rating may not be less than: 0 or greater than: 5" );
         } else if (this.rating >= 1 && this.rating < 3) {
@@ -64,10 +63,9 @@ public class BonusAndIncrease {
         final double percentage2 = 7.5;
         final double percentage3 = 10;
 
-        double minimumSalary = 112908.00;
-        if (this.salary < minimumSalary || this.percentageIncrease < 1|| (this.rating < 0 || this.rating > 5)) {
+        if (this.salary < this.minimumSalary || this.percentageIncrease < 1|| (this.rating < 0 || this.rating > 5)) {
             System.out.println("Invalid Input Error: " + "\n" +
-                    "Minimum amount for salary is: " + currencyFormatter(minimumSalary) + "\n" +
+                    "Minimum amount for salary is: " + currencyFormatter(this.minimumSalary) + "\n" +
                     "Percentage cannot be less than: 1" + "\n" +
                     "Rating may not be less than: 0 or greater than: 5" );
         } else if (this.rating >= 1 && this.rating < 3) {
