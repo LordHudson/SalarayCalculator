@@ -11,45 +11,41 @@ public class BonusAndIncrease {
         this.percentageIncrease = percentageIncrease / 100;
         this.salary = salary;
         this.rating = rating;
-
-        if (salary < this.minimumSalary) {
-            System.out.println("Invalid salary amount. Minimum salary is " + currencyFormatter(minimumSalary));
-        }
     }
 
     public void increaseCalculator() {
 
-        if (this.salary < this.minimumSalary || this.percentageIncrease < 1 || (this.rating < 0 || this.rating > 5)) {
+        if (this.salary < this.minimumSalary || this.percentageIncrease < 0 || this.rating < 0 || this.rating > 5) {
             System.out.println("Invalid Input Error: " + "\n" +
                     "Minimum amount for salary is: " + currencyFormatter(this.minimumSalary) + "\n" +
                     "Percentage cannot be less than: 1" + "\n" +
-                    "Rating may not be less than: 0 or greater than: 5" );
+                    "Rating may not be less than: 0 or greater than: 5");
         } else if (this.rating >= 1 && this.rating < 3) {
             System.out.println("No increase for you!");
 
         } else if ((this.rating >= 3) && (this.rating <= 3.5)) {
 
-            double increaseAmount = (this.percentageIncrease * salary);
-            double newSalary = (increaseAmount + this.salary);
-            System.out.println("Your salary was increased by " + (this.percentageIncrease * 100) + "%.\n"
-                    + "Your new salary is " + currencyFormatter(newSalary));
+//            double increaseAmount = (this.percentageIncrease * salary);
+//            double newSalary = (increaseAmount + this.salary);
+            System.out.println("Your salary was increased by " + percentage() + "%.\n"
+                    + "Your new salary is " + currencyFormatter(newSalary()));
         } else if ((this.rating >= 3.6) && (this.rating <= 3.9)) {
-            double increaseAmount = (this.percentageIncrease * this.salary);
-            double newSalary = (increaseAmount + this.salary);
-            System.out.println("Your salary was increased by " + (this.percentageIncrease * 100) + "%.\n"
-                    + "Your new salary is " + currencyFormatter(newSalary));
+//            double increaseAmount = (this.percentageIncrease * this.salary);
+//            double newSalary = (increaseAmount + this.salary);
+            System.out.println("Your salary was increased by " + percentage() + "%.\n"
+                    + "Your new salary is " + currencyFormatter(newSalary()));
 
         } else if ((this.rating >= 4) && (this.rating <= 4.9)) {
-            double increaseAmount = (this.percentageIncrease * this.salary);
-            double newSalary = (increaseAmount + this.salary);
-            System.out.println("Your salary was increased by " + (this.percentageIncrease * 100) + "%.\n"
-                    + "Your new salary is " + currencyFormatter(newSalary));
+//            double increaseAmount = (this.percentageIncrease * this.salary);
+//            double newSalary = (increaseAmount + this.salary);
+            System.out.println("Your salary was increased by " + percentage() + "%.\n"
+                    + "Your new salary is " + currencyFormatter(newSalary()));
 
         } else if (this.rating == 5) {
-            double increaseAmount = (this.percentageIncrease * this.salary);
-            double newSalary = (increaseAmount + this.salary);
-            System.out.println("Your salary was increased by " + (this.percentageIncrease * 100) + "%." + "\n"
-                    + "Your new salary is " + "R" + String.format("%.2f", newSalary));
+//            double increaseAmount = (this.percentageIncrease * this.salary);
+//            double newSalary = (increaseAmount + this.salary);
+            System.out.println("Your salary was increased by " + percentage() + "%." + "\n"
+                    + "Your new salary is " + currencyFormatter(newSalary()));
         } else System.out.println("No increase for you, your salary remains unchanged at " + this.salary);
     }
 
@@ -63,11 +59,11 @@ public class BonusAndIncrease {
         final double percentage2 = 7.5;
         final double percentage3 = 10;
 
-        if (this.salary < this.minimumSalary || this.percentageIncrease < 1|| (this.rating < 0 || this.rating > 5)) {
+        if (this.salary < this.minimumSalary || this.percentageIncrease < 0 || this.rating < 0 || this.rating > 5) {
             System.out.println("Invalid Input Error: " + "\n" +
                     "Minimum amount for salary is: " + currencyFormatter(this.minimumSalary) + "\n" +
                     "Percentage cannot be less than: 1" + "\n" +
-                    "Rating may not be less than: 0 or greater than: 5" );
+                    "Rating may not be less than: 0 or greater than: 5");
         } else if (this.rating >= 1 && this.rating < 3) {
             System.out.println("No bonus for you.");
         } else if ((this.rating >= 3) && (this.rating <= 3.5)) {
@@ -90,7 +86,7 @@ public class BonusAndIncrease {
                 System.out.println("Your bonus amount is " + currencyFormatter(bonus));
             }
 
-        } else if ((this.rating == 5) ) {
+        } else if ((this.rating == 5)) {
             double bonusAmount = (percentage3 / 100) * this.salary;
             if (bonusAmount > bonus2) {
                 System.out.println("Your bonus amount is: " + currencyFormatter(bonusAmount));
@@ -103,6 +99,15 @@ public class BonusAndIncrease {
     private String currencyFormatter(double money) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(money);
+    }
+
+    private double percentage() {
+        return this.percentageIncrease * 100;
+    }
+
+    private double newSalary() {
+        double increaseAmount = (this.percentageIncrease * salary);
+        return increaseAmount + this.salary;
     }
 }
 
